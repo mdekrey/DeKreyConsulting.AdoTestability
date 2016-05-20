@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0-*",
+  "description": "DeKreyConsulting.AdoTestability.Testing.Moq Class Library",
+  "authors": [ "Matt" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "net451": {
+    }
+  },
+  "dependencies": {
+    "DeKreyConsulting.AdoTestability": "1.0.0-*",
+    "DeKreyConsulting.AdoTestability.Testing.Stubs": "1.0.0-*",
+    "Moq": "4.2.1510.2205"
+  }
+}
