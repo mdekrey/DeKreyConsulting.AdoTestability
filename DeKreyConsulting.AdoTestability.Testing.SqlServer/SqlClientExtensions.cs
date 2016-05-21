@@ -10,7 +10,7 @@ namespace DeKreyConsulting.AdoTestability
 {
     public static class SqlClientExtensions
     {
-        public static void Explain(this CommandBuilder command, System.Data.SqlClient.SqlConnection connection, bool allowMultipleResults = false)
+        public static void Explain(this CommandBuilder command, System.Data.SqlClient.SqlConnection connection, Action<XmlDocument> analyzeSqlExecutionPlan)
         {
             string content;
 
@@ -39,31 +39,37 @@ namespace DeKreyConsulting.AdoTestability
 
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(content);
-            AnalyzeExecutionPlan(allowMultipleResults, doc);
+            analyzeSqlExecutionPlan(doc);
         }
 
-        private static void AnalyzeExecutionPlan(bool allowMultipleResults, XmlDocument doc)
-        {
-            var badXpaths = new List<string>()
+        public static void ExplainSingleResult(this CommandBuilder command, System.Data.SqlClient.SqlConnection connection) =>
+            command.Explain(connection, AnalyzeSingleResultExecutionPlan);
+        public static void ExplainMultipleResult(this CommandBuilder command, System.Data.SqlClient.SqlConnection connection) =>
+            command.Explain(connection, AnalyzeMultipleResultExecutionPlan);
+
+        public static void AnalyzeSingleResultExecutionPlan(XmlDocument doc) =>
+            ScanForBadXPaths(doc, new List<string>()
             {
                 "//*[@PhysicalOp='Table Scan']",
-            };
-            if (!allowMultipleResults)
-            {
-                badXpaths.AddRange(new[]
-                {
-                    "//*[@PhysicalOp='Clustered Index Scan' or @PhysicalOp='Clustered Index Scan']"
-                });
-            }
+                "//*[@PhysicalOp='Clustered Index Scan' or @PhysicalOp='Clustered Index Scan']",
+            });
 
+        public static void AnalyzeMultipleResultExecutionPlan(XmlDocument doc) =>
+            ScanForBadXPaths(doc, new List<string>()
+            {
+                "//*[@PhysicalOp='Table Scan']",
+            });
+
+        public static void ScanForBadXPaths(XmlDocument doc, IEnumerable<string> badXpaths)
+        {
             var namespaceManager = new XmlNamespaceManager(new NameTable());
             namespaceManager.AddNamespace("", "http://schemas.microsoft.com/sqlserver/2004/07/showplan");
             foreach (var badXpath in badXpaths)
             {
-                var elems = doc.SelectNodes(badXpath, namespaceManager) as IEnumerable<XmlNode>;
+                var elems = doc.SelectNodes(badXpath, namespaceManager).OfType<XmlNode>();
                 if (elems.Any())
                 {
-                    throw new BadExecutionPlanException("Execution plan had disallowed entry - " + badXpath + ":\r\n" + elems.First().ToString());
+                    throw new BadExecutionPlanException("Execution plan had disallowed entry - " + badXpath + ":\r\n" + elems.First().OuterXml);
                 }
             }
         }

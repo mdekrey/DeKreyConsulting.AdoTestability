@@ -21,7 +21,8 @@ namespace Moq
         {
             var mockConnection = new Mock<MockableConnection>();
             mockFactory.Setup(factory => factory.CreateConnection()).Returns(mockConnection.Object);
-            return mockConnection.SetupFor(commandBuilders, withStandardDelay);
+            var temp = mockConnection.SetupFor(commandBuilders, withStandardDelay);
+            return new CommandBuilderMocks(mockFactory, temp.Connection, temp.Commands, temp.Executions);
         }
 
         public static CommandBuilderMocks SetupFor(this Mock<MockableConnection> mockConnection, Dictionary<CommandBuilder, SetupCommandBuilderMock> commandBuilders, bool withStandardDelay = false)
@@ -56,10 +57,7 @@ namespace Moq
                     }
 
                     var builder = commandBuilderLookup[commandText];
-                    if (builder.Setup != null)
-                    {
-                        builder.Setup(mockCommand, record);
-                    }
+                    builder.Setup?.Invoke(mockCommand, record);
                     commands[builder.Builder] = mockCommand;
                     executions[builder.Builder] = calls;
                 });
@@ -75,12 +73,11 @@ namespace Moq
                 return mockCommand.Object;
             });
 
-            return new CommandBuilderMocks
-            {
-                Connection = mockConnection,
-                Commands = commands,
-                Executions = executions,
-            };
+            return new CommandBuilderMocks(
+                providerFactory: null,
+                connection: mockConnection,
+                commands: commands,
+                executions: executions);
         }
 
         private static void RegisterExecutions(DbCommand dbCommand, List<IReadOnlyDictionary<string, object>> calls)

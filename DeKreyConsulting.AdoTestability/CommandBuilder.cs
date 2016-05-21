@@ -27,12 +27,12 @@ namespace DeKreyConsulting.AdoTestability
         /// deterministic behavior. (Slight performance hit, but these should be constructed statically.)</param>
         /// <param name="commandType">The type of the command</param>
         /// <param name="commandTimeout">The timeout duration, in seconds. Defaults to no timeout.</param>
-        public CommandBuilder(string commandText, IReadOnlyParameterInitializers parameters, CommandType commandType = CommandType.Text, int commandTimeout = 0)
+        public CommandBuilder(string commandText, IReadOnlyParameterInitializers parameters = null, CommandType commandType = CommandType.Text, int commandTimeout = 0)
         {
             this.CommandText = commandText;
             this.CommandType = commandType;
             this.CommandTimeout = commandTimeout;
-            this.Parameters = parameters;
+            this.Parameters = parameters ?? new ReadOnlyParameterInitializers(new Dictionary<string, ParameterInitializer>());
         }
 
         /// <summary>
@@ -94,14 +94,5 @@ namespace DeKreyConsulting.AdoTestability
                 command.Parameters[param.Key].Value = param.Value;
             }
         }
-
-        public static CommandBuilder Construct<TParameter>(string commandText, IReadOnlyDictionary<string, Action<TParameter>> parameters)
-            where TParameter : DbParameter =>
-            new CommandBuilder(
-                commandText, 
-                parameters
-                    .ToDictionary(
-                        keySelector: kvp => kvp.Key, 
-                        elementSelector: kvp => (ParameterInitializer)(parameter => kvp.Value(parameter as TParameter))));
     }
 }
