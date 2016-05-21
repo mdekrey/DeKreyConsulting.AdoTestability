@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.1-*",
   "title": "Ado Testability Examples",
   "description": "Examples for DeKreyConsulting.AdoTestability",
   "authors": [ "Matt DeKrey" ],
@@ -8,7 +8,7 @@
   "licenseUrl": "https://spdx.org/licenses/MIT.html",
 
   "frameworks": {
-    "net451": { },
+    "net45": { },
     "dotnet5.4": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -21,6 +21,6 @@
     }
   },
   "dependencies": {
-    "DeKreyConsulting.AdoTestability": "1.0.0-*"
+    "DeKreyConsulting.AdoTestability": "1.0.1-*"
   }
 }

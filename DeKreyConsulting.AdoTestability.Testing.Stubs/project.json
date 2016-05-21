@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "1.0.1-*",
   "title": "Ado Testability Stubs",
   "description": "Provides fakes and classes that can be more easily overridden, mocked, or stubbed in tests.",
   "authors": [ "Matt DeKrey" ],
@@ -8,11 +8,11 @@
   "licenseUrl": "https://spdx.org/licenses/MIT.html",
 
   "dependencies": {
-    "DeKreyConsulting.AdoTestability": "1.0.0-*"
+    "DeKreyConsulting.AdoTestability": "1.0.1-*"
   },
 
   "frameworks": {
-    "net451": { },
+    "net45": { },
     "dotnet5.4": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1-beta-23516",

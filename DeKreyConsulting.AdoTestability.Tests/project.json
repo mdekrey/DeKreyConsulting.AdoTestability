@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "1.0.1-*",
   "title": "Ado Testability Tests",
   "description": "Tests for DeKreyConsulting.AdoTestability.",
   "authors": [ "Matt DeKrey" ],
@@ -8,10 +8,10 @@
   "licenseUrl": "https://spdx.org/licenses/MIT.html",
 
   "dependencies": {
-    "DeKreyConsulting.AdoTestability": "1.0.0-*",
-    "DeKreyConsulting.AdoTestability.Example": "1.0.0-*",
-    "DeKreyConsulting.AdoTestability.Testing.Moq": "1.0.0-*",
-    "DeKreyConsulting.AdoTestability.Testing.SqlServer": "1.0.0-*",
+    "DeKreyConsulting.AdoTestability": "1.0.1-*",
+    "DeKreyConsulting.AdoTestability.Example": "1.0.1-*",
+    "DeKreyConsulting.AdoTestability.Testing.Moq": "1.0.1-*",
+    "DeKreyConsulting.AdoTestability.Testing.SqlServer": "1.0.1-*",
     "OpenCover": "4.5.3809-rc94",
     "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15897"
   },

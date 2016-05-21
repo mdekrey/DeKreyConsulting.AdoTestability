@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.1-*",
   "title": "Ado Testability",
   "description": "The core project in the framework includes a simple `CommandBuilder` that can assemble a `System.Data.Common.DbCommand` from common configuration and connection-specifc configuration.",
   "authors": [ "Matt DeKrey" ],
@@ -8,7 +8,7 @@
   "licenseUrl": "https://spdx.org/licenses/MIT.html",
 
   "frameworks": {
-    "net451": {
+    "net45": {
       "frameworkAssemblies": {
         "System.Data": "4.0.0.0"
       }
