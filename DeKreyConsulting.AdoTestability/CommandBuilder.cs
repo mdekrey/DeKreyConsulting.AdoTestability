@@ -4,22 +4,25 @@ using System.Collections.ObjectModel;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
+using ParameterInitializer = System.Action<System.Data.Common.DbParameter>;
 
 namespace DeKreyConsulting.AdoTestability
 {
+    using IReadOnlyParameterInitializers = IReadOnlyDictionary<string, ParameterInitializer>;
+    using ReadOnlyParameterInitializers = ReadOnlyDictionary<string, ParameterInitializer>;
 
     public class CommandBuilder
     {
-        public CommandBuilder(string commandText, Dictionary<string, Action<DbParameter>> parameters)
+        public CommandBuilder(string commandText, IReadOnlyParameterInitializers parameters)
         {
             this.CommandText = commandText;
-            this.Parameters = new ReadOnlyDictionary<string, Action<DbParameter>>(new Dictionary<string, Action<DbParameter>>(parameters));
+            this.Parameters = new ReadOnlyParameterInitializers(parameters.ToDictionary(kvp => kvp.Key, kvp => kvp.Value));
         }
 
-        public string CommandText { get; private set; }
-        public IReadOnlyDictionary<string, Action<DbParameter>> Parameters { get; private set; }
+        public string CommandText { get; }
+        public IReadOnlyParameterInitializers Parameters { get; }
 
-        public DbCommand BuildFrom(DbConnection connection, Dictionary<string, object> parameterValues)
+        public DbCommand BuildFrom(DbConnection connection, IReadOnlyDictionary<string, object> parameterValues)
         {
             var command = connection.CreateCommand();
             command.CommandText = CommandText;
@@ -43,5 +46,14 @@ namespace DeKreyConsulting.AdoTestability
 
             return command;
         }
+
+        public static CommandBuilder Construct<TParameter>(string commandText, IReadOnlyDictionary<string, Action<TParameter>> parameters)
+            where TParameter : DbParameter =>
+            new CommandBuilder(
+                commandText, 
+                parameters
+                    .ToDictionary(
+                        keySelector: kvp => kvp.Key, 
+                        elementSelector: kvp => (ParameterInitializer)(parameter => kvp.Value(parameter as TParameter))));
     }
 }
