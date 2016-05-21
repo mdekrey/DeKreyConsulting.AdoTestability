@@ -1,10 +1,11 @@
 {
   "version": "1.0.0-*",
-  "description": "DeKreyConsulting.AdoTestability.Testing.Moq Class Library",
-  "authors": [ "Matt" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "description": "Provides classes that use the Moq mocking framework. This provides easy mock setup, tracking of command executions, including parameter values.",
+  "authors": [ "Matt DeKrey" ],
+  "tags": [ "Database", "Data", "ADO.NET", "test", "tdd", "Moq" ],
+  "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
+  "licenseUrl": "https://spdx.org/licenses/MIT.html",
+
   "frameworks": {
     "net451": {
     }

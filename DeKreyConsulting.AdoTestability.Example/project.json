@@ -1,10 +1,11 @@
 {
   "version": "1.0.0-*",
-  "description": "DeKreyConsulting.AdoTestability.Example Class Library",
-  "authors": [ "Matt" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "description": "Examples for DeKreyConsulting.AdoTestability",
+  "authors": [ "Matt DeKrey" ],
+  "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],
+  "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
+  "licenseUrl": "https://spdx.org/licenses/MIT.html",
+
   "frameworks": {
     "net451": { },
     "dotnet5.4": {

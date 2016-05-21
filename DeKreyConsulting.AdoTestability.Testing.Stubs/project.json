@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "DeKreyConsulting.AdoTestability.Testing.Stubs Class Library",
-  "authors": [ "Matt" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "description": "Provides fakes and classes that can be more easily overridden, mocked, or stubbed in tests.",
+  "authors": [ "Matt DeKrey" ],
+  "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],
+  "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
+  "licenseUrl": "https://spdx.org/licenses/MIT.html",
 
   "dependencies": {
     "DeKreyConsulting.AdoTestability": "1.0.0-*"
