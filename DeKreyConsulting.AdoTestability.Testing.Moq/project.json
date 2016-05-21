@@ -1,5 +1,6 @@
 {
   "version": "1.0.0-*",
+  "title": "Ado Testability - Moq extensions",
   "description": "Provides classes that use the Moq mocking framework. This provides easy mock setup, tracking of command executions, including parameter values.",
   "authors": [ "Matt DeKrey" ],
   "tags": [ "Database", "Data", "ADO.NET", "test", "tdd", "Moq" ],

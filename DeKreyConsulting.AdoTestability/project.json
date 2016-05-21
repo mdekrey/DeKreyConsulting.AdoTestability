@@ -1,5 +1,6 @@
 {
   "version": "1.0.0-*",
+  "title": "Ado Testability",
   "description": "The core project in the framework includes a simple `CommandBuilder` that can assemble a `System.Data.Common.DbCommand` from common configuration and connection-specifc configuration.",
   "authors": [ "Matt DeKrey" ],
   "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],

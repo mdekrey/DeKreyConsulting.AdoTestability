@@ -1,5 +1,6 @@
 {
   "version": "1.0.0-*",
+  "title": "Ado Testability Examples",
   "description": "Examples for DeKreyConsulting.AdoTestability",
   "authors": [ "Matt DeKrey" ],
   "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],

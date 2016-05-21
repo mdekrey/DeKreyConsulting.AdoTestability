@@ -1,5 +1,6 @@
 ﻿{
   "version": "1.0.0-*",
+  "title": "Ado Testability Stubs",
   "description": "Provides fakes and classes that can be more easily overridden, mocked, or stubbed in tests.",
   "authors": [ "Matt DeKrey" ],
   "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],

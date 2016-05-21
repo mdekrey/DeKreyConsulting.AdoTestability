@@ -1,5 +1,6 @@
 {
   "version": "1.0.0-*",
+  "title": "Ado Testability - SqlServer extensions",
   "description": "Provides execution plan testing for SqlServer. This allows you to unit test the `CommandBuilder.CommandText` property by actually sending it to the database and running an explain plan.",
   "authors": [ "Matt DeKrey" ],
   "tags": [ "Database", "Data", "ADO.NET", "test", "tdd", "SqlServer", "SQL" ],
