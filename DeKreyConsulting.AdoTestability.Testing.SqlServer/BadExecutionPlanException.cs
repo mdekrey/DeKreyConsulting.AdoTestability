@@ -8,7 +8,7 @@ namespace DeKreyConsulting.AdoTestability
 #if !DOTNET5_4
     [Serializable]
 #endif
-    internal class BadExecutionPlanException : Exception
+    public class BadExecutionPlanException : Exception
     {
         public BadExecutionPlanException()
         {
