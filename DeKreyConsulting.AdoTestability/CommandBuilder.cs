@@ -81,18 +81,10 @@ namespace DeKreyConsulting.AdoTestability
 
             if (parameterValues != null)
             {
-                ApplyParameters(command, parameterValues);
+                command.ApplyParameters(parameterValues);
             }
 
             return command;
-        }
-
-        public static void ApplyParameters(DbCommand command, IReadOnlyDictionary<string, object> parameterValues)
-        {
-            foreach (var param in parameterValues)
-            {
-                command.Parameters[param.Key].Value = param.Value;
-            }
         }
     }
 }
