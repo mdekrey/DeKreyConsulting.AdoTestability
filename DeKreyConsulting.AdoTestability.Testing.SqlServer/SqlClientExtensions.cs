@@ -25,7 +25,7 @@ namespace DeKreyConsulting.AdoTestability
                     cmd.Parameters.Clear();
                 }
 
-#if !DOTNET5_4
+#if NET451
                 connection.InfoMessage += (sender, e) => System.Diagnostics.Trace.WriteLine(e.Message);
 #endif
                 connection.Open();

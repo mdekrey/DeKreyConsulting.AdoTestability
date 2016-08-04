@@ -142,7 +142,7 @@ namespace DeKreyConsulting.AdoTestability.Testing.Stubs
                 return Task.Delay(10).ContinueWith(t => base.ReadAsync(cancellationToken)).Unwrap();
             return base.ReadAsync(cancellationToken);
         }
-#if !DOTNET5_4
+#if NET451
         public override void Close()
         {
         }

@@ -1,26 +1,27 @@
 {
-  "version": "1.0.1-*",
+  "version": "1.0.2-*",
   "title": "Ado Testability",
   "description": "The core project in the framework includes a simple `CommandBuilder` that can assemble a `System.Data.Common.DbCommand` from common configuration and connection-specifc configuration.",
   "authors": [ "Matt DeKrey" ],
-  "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],
-  "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
-  "licenseUrl": "https://spdx.org/licenses/MIT.html",
+  "packOptions": {
+    "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
+    "licenseUrl": "https://spdx.org/licenses/MIT.html",
+    "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ]
+  },
+
+  "dependencies": {
+    "System.Data.Common": "4.1.0"
+  },
 
   "frameworks": {
-    "net45": {
-      "frameworkAssemblies": {
-        "System.Data": "4.0.0.0"
-      }
-    },
-    "dotnet5.4": {
+    "net451": {},
+    "netstandard1.2": {
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Data.Common": "4.0.1-rc2-23525",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
+        "Microsoft.CSharp": "4.0.1",
+        "System.Linq": "4.1.0",
+        "System.Runtime": "4.1.0",
+        "System.Threading": "4.0.11",
+        "System.Collections": "4.0.11"
       }
     }
   }

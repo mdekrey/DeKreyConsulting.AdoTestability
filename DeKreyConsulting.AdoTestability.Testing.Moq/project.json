@@ -1,22 +1,24 @@
 {
-  "version": "1.0.1-*",
+  "version": "1.0.2-*",
   "title": "Ado Testability - Moq extensions",
   "description": "Provides classes that use the Moq mocking framework. This provides easy mock setup, tracking of command executions, including parameter values.",
   "authors": [ "Matt DeKrey" ],
-  "tags": [ "Database", "Data", "ADO.NET", "test", "tdd", "Moq" ],
-  "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
-  "licenseUrl": "https://spdx.org/licenses/MIT.html",
+  "packOptions": {
+    "tags": [ "Database", "Data", "ADO.NET", "test", "tdd", "Moq" ],
+    "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
+    "licenseUrl": "https://spdx.org/licenses/MIT.html"
+  },
 
   "frameworks": {
-    "net45": {
+    "net451": {
       "frameworkAssemblies": {
         "System.Data": "4.0.0.0"
       }
     }
   },
   "dependencies": {
-    "DeKreyConsulting.AdoTestability": "1.0.1-*",
-    "DeKreyConsulting.AdoTestability.Testing.Stubs": "1.0.1-*",
+    "DeKreyConsulting.AdoTestability": "1.0.2-*",
+    "DeKreyConsulting.AdoTestability.Testing.Stubs": "1.0.2-*",
     "Moq": "4.2.1510.2205"
   }
 }

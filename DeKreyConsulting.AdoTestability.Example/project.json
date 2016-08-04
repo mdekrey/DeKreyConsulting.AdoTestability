@@ -1,26 +1,34 @@
 {
-  "version": "1.0.1-*",
+  "version": "1.0.2-*",
   "title": "Ado Testability Examples",
   "description": "Examples for DeKreyConsulting.AdoTestability",
   "authors": [ "Matt DeKrey" ],
-  "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],
-  "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
-  "licenseUrl": "https://spdx.org/licenses/MIT.html",
+  "packOptions": {
+    "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],
+    "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
+    "licenseUrl": "https://spdx.org/licenses/MIT.html"
+  },
+
+  "dependencies": {
+    "DeKreyConsulting.AdoTestability": "1.0.2-*"
+  },
 
   "frameworks": {
-    "net45": { },
-    "dotnet5.4": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.Runtime": "4.0.10.0"
+      }
+    },
+    "netstandard1.2": {
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Data.SqlClient": "4.0.0-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
+        "Microsoft.CSharp": "4.0.1",
+        "System.Collections": "4.0.11",
+        "System.Data.SqlClient": "4.1.0",
+        "System.Linq": "4.1.0",
+        "System.Runtime": "4.1.0",
+        "System.Threading": "4.0.11",
+        "System.Runtime.Extensions": "4.1.0"
       }
     }
-  },
-  "dependencies": {
-    "DeKreyConsulting.AdoTestability": "1.0.1-*"
   }
 }

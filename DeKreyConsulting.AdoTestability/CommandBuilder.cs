@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Threading.Tasks;
 using ParameterInitializer = System.Action<System.Data.Common.DbParameter>;
 
 namespace DeKreyConsulting.AdoTestability

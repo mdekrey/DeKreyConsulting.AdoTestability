@@ -1,26 +1,29 @@
 ﻿{
-  "version": "1.0.1-*",
+  "version": "1.0.2-*",
+  "testRunner": "xunit",
   "title": "Ado Testability Tests",
   "description": "Tests for DeKreyConsulting.AdoTestability.",
   "authors": [ "Matt DeKrey" ],
-  "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],
-  "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
-  "licenseUrl": "https://spdx.org/licenses/MIT.html",
-
-  "dependencies": {
-    "DeKreyConsulting.AdoTestability": "1.0.1-*",
-    "DeKreyConsulting.AdoTestability.Example": "1.0.1-*",
-    "DeKreyConsulting.AdoTestability.Testing.Moq": "1.0.1-*",
-    "DeKreyConsulting.AdoTestability.Testing.SqlServer": "1.0.1-*",
-    "OpenCover": "4.5.3809-rc94",
-    "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15897"
+  "packOptions": {
+    "tags": [ "Database", "Data", "ADO.NET", "test", "tdd" ],
+    "projectUrl": "https://github.com/mdekrey/DeKreyConsulting.AdoTestability",
+    "licenseUrl": "https://spdx.org/licenses/MIT.html"
   },
 
-  "commands": {
-    "test": "xunit.runner.aspnet"
+  "dependencies": {
+    "DeKreyConsulting.AdoTestability": "1.0.2-*",
+    "DeKreyConsulting.AdoTestability.Example": "1.0.2-*",
+    "DeKreyConsulting.AdoTestability.Testing.Moq": "1.0.2-*",
+    "DeKreyConsulting.AdoTestability.Testing.SqlServer": "1.0.2-*"
   },
 
   "frameworks": {
-    "dnx451": { }
+    "dnx451": {
+      "dependencies": {
+        "xunit": "2.2.0-beta2-build3300",
+        "dotnet-test-xunit": "2.2.0-preview2-build1029",
+        "Microsoft.AspNetCore.TestHost": "1.0.0"
+      }
+    }
   }
 }

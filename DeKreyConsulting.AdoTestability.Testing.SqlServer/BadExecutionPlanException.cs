@@ -1,11 +1,11 @@
 ﻿using System;
-#if !DOTNET5_4
+#if NET451
 using System.Runtime.Serialization;
 #endif
 
 namespace DeKreyConsulting.AdoTestability
 {
-#if !DOTNET5_4
+#if NET451
     [Serializable]
 #endif
     public class BadExecutionPlanException : Exception
@@ -22,7 +22,7 @@ namespace DeKreyConsulting.AdoTestability
         {
         }
 
-#if !DOTNET5_4
+#if NET451
         protected BadExecutionPlanException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }

@@ -35,7 +35,10 @@ namespace DeKreyConsulting.AdoTestability.Testing.Stubs
 
         public override void AddRange(Array values)
         {
-            values.OfType<object>().ToList().ForEach(obj => Add(obj));
+            foreach (var obj in values.OfType<object>())
+            {
+                Add(obj);
+            }
         }
 
         public override void Clear()
@@ -140,7 +143,7 @@ namespace DeKreyConsulting.AdoTestability.Testing.Stubs
             }
         }
 
-#if !DOTNET5_4
+#if NET451
         public override bool IsFixedSize
         {
             get
@@ -172,7 +175,7 @@ namespace DeKreyConsulting.AdoTestability.Testing.Stubs
             {
                 throw new ArgumentNullException("value");
             }
-            if (!typeof(DbParameter).IsInstanceOfType(value))
+            if (!typeof(DbParameter).GetTypeInfo().IsAssignableFrom(value.GetType().GetTypeInfo()))
             {
                 throw new ArgumentException();
             }
