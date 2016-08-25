@@ -81,6 +81,10 @@ namespace DeKreyConsulting.AdoTestability.Testing.Stubs
         protected override DbParameter GetParameter(string parameterName)
         {
             int num = this.IndexOf(parameterName);
+            if (num < 0)
+            {
+                throw new ArgumentException($"Unknown parameter {parameterName}", nameof(parameterName));
+            }
             return this.InnerList[num];
         }
 
@@ -112,7 +116,12 @@ namespace DeKreyConsulting.AdoTestability.Testing.Stubs
 
         public override void RemoveAt(string parameterName)
         {
-            InnerList.RemoveAt(this.IndexOf(parameterName));
+            var num = this.IndexOf(parameterName);
+            if (num < 0)
+            {
+                throw new ArgumentException($"Unknown parameter {parameterName}", nameof(parameterName));
+            }
+            InnerList.RemoveAt(num);
         }
 
         public override void RemoveAt(int index)
@@ -123,6 +132,10 @@ namespace DeKreyConsulting.AdoTestability.Testing.Stubs
         protected override void SetParameter(string parameterName, DbParameter value)
         {
             int num = this.IndexOf(parameterName);
+            if (num < 0)
+            {
+                throw new ArgumentException($"Unknown parameter {parameterName}", nameof(parameterName));
+            }
             value.ParameterName = parameterName;
             SetParameter(num, value);
         }

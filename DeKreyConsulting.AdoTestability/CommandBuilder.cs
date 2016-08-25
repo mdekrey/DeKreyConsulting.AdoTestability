@@ -61,27 +61,34 @@ namespace DeKreyConsulting.AdoTestability
         /// <returns>A new DbCommand that should be disposed of after use</returns>
         public DbCommand BuildFrom(DbConnection connection, IReadOnlyDictionary<string, object> parameterValues = null, DbTransaction transaction = null)
         {
-            var command = connection.CreateCommand();
-            command.CommandText = CommandText;
-            command.CommandType = CommandType;
-            command.CommandTimeout = CommandTimeout;
-            command.Connection = connection;
-            command.Transaction = transaction;
-
-            foreach (var param in Parameters)
+            try
             {
-                var parameter = command.CreateParameter();
-                parameter.ParameterName = param.Key;
-                param.Value(parameter);
-                command.Parameters.Add(parameter);
-            }
+                var command = connection.CreateCommand();
+                command.CommandText = CommandText;
+                command.CommandType = CommandType;
+                command.CommandTimeout = CommandTimeout;
+                command.Connection = connection;
+                command.Transaction = transaction;
 
-            if (parameterValues != null)
+                foreach (var param in Parameters)
+                {
+                    var parameter = command.CreateParameter();
+                    parameter.ParameterName = param.Key;
+                    param.Value(parameter);
+                    command.Parameters.Add(parameter);
+                }
+
+                if (parameterValues != null)
+                {
+                    command.ApplyParameters(parameterValues);
+                }
+
+                return command;
+            }
+            catch (System.Exception ex)
             {
-                command.ApplyParameters(parameterValues);
+                throw new System.InvalidOperationException($"Unable to set up command: {CommandText}", ex);
             }
-
-            return command;
         }
     }
 }

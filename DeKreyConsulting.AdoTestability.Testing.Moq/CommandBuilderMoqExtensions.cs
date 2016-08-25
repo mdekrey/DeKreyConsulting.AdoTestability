@@ -85,6 +85,10 @@ namespace Moq
             var captured = new Dictionary<string, object>();
             foreach (var param in dbCommand.Parameters.OfType<DbParameter>())
             {
+                if (param.Value == null)
+                {
+                    throw new InvalidOperationException($"Parameter not allowed to be Null; at least set to DBNull. Parameter: {param.ParameterName}");
+                }
                 captured[param.ParameterName] = param.Value;
             }
             calls.Add(new ReadOnlyDictionary<string, object>(captured));
