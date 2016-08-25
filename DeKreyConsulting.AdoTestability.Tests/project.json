@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.2-*",
+  "version": "1.0.3-*",
   "testRunner": "xunit",
   "title": "Ado Testability Tests",
   "description": "Tests for DeKreyConsulting.AdoTestability.",
@@ -11,10 +11,10 @@
   },
 
   "dependencies": {
-    "DeKreyConsulting.AdoTestability": "1.0.2-*",
-    "DeKreyConsulting.AdoTestability.Example": "1.0.2-*",
-    "DeKreyConsulting.AdoTestability.Testing.Moq": "1.0.2-*",
-    "DeKreyConsulting.AdoTestability.Testing.SqlServer": "1.0.2-*"
+    "DeKreyConsulting.AdoTestability": "[1.0.3,)",
+    "DeKreyConsulting.AdoTestability.Example": "[1.0.2,)",
+    "DeKreyConsulting.AdoTestability.Testing.Moq": "[1.0.3,)",
+    "DeKreyConsulting.AdoTestability.Testing.SqlServer": "[1.0.3,)"
   },
 
   "frameworks": {

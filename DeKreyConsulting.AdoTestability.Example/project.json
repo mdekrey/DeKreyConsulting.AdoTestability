@@ -10,7 +10,7 @@
   },
 
   "dependencies": {
-    "DeKreyConsulting.AdoTestability": "1.0.2-*"
+    "DeKreyConsulting.AdoTestability": "[1.0.2,)"
   },
 
   "frameworks": {
