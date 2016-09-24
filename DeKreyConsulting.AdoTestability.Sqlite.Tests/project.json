@@ -1,7 +1,7 @@
 ﻿{
-  "version": "1.0.4-*",
+  "version": "1.0.0-*",
   "testRunner": "xunit",
-  "title": "Ado Testability Tests",
+  "title": "Ado Testability Sqlite Tests",
   "description": "Tests for DeKreyConsulting.AdoTestability.",
   "authors": [ "Matt DeKrey" ],
   "packOptions": {
@@ -11,10 +11,10 @@
   },
 
   "dependencies": {
-    "DeKreyConsulting.AdoTestability": "[1.0.3,)",
-    "DeKreyConsulting.AdoTestability.Example": "[1.0.2,)",
+    "DeKreyConsulting.AdoTestability": "[1.0.4,)",
     "DeKreyConsulting.AdoTestability.Testing.Moq": "[1.0.3,)",
-    "DeKreyConsulting.AdoTestability.Testing.SqlServer": "[1.0.4,)"
+    "DeKreyConsulting.AdoTestability.Testing.Sqlite": "[1.0.0,)",
+    "Microsoft.Data.SQLite": "1.0.0"
   },
 
   "frameworks": {

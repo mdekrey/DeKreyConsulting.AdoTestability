@@ -3,7 +3,7 @@
 using System.Runtime.Serialization;
 #endif
 
-namespace DeKreyConsulting.AdoTestability.Testing.SqlServer
+namespace DeKreyConsulting.AdoTestability.Testing.Sqlite
 {
 #if NET451
     [Serializable]

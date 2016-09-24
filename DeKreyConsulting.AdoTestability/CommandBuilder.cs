@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
@@ -70,25 +71,35 @@ namespace DeKreyConsulting.AdoTestability
                 command.Connection = connection;
                 command.Transaction = transaction;
 
-                foreach (var param in Parameters)
-                {
-                    var parameter = command.CreateParameter();
-                    parameter.ParameterName = param.Key;
-                    param.Value(parameter);
-                    command.Parameters.Add(parameter);
-                }
-
-                if (parameterValues != null)
-                {
-                    command.ApplyParameters(parameterValues);
-                }
+                ApplyParameters(command, parameterValues);
 
                 return command;
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                throw new System.InvalidOperationException($"Unable to set up command: {CommandText}", ex);
+                throw new InvalidOperationException($"Unable to set up command: {CommandText}", ex);
             }
+        }
+
+        private void ApplyParameters(DbCommand command, IReadOnlyDictionary<string, object> parameterValues)
+        {
+            foreach (var param in Parameters)
+            {
+                var value = parameterValues.ContainsKey(param.Key) ? parameterValues[param.Key] : null;
+                BuildParameter(command, param.Key, param.Value, value);
+            }
+        }
+
+        private static void BuildParameter(DbCommand command, string paramName, ParameterInitializer paramInitializer, object value)
+        {
+            var parameter = command.CreateParameter();
+            if (paramName != null)
+            {
+                parameter.ParameterName = paramName;
+            }
+            paramInitializer(parameter);
+            parameter.Value = value;
+            command.Parameters.Add(parameter);
         }
     }
 }
