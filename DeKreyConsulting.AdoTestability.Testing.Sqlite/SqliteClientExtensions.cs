@@ -11,37 +11,19 @@ namespace DeKreyConsulting.AdoTestability
 {
     public static class SqliteClientExtensions
     {
-        public static void Explain(this CommandBuilder command, Microsoft.Data.Sqlite.SqliteConnection connection, Action<string> analyzeSqliteExecutionPlan)
+        public static void Explain(this CommandBuilder command, Microsoft.Data.Sqlite.SqliteConnection connection)
         {
-            string content;
-
             using (connection)
             using (var cmd = command.BuildFrom(connection, command.Parameters.ToDictionary(kvp => kvp.Key, kvp => (object)DBNull.Value)))
             {
-                cmd.CommandText = "EXPLAIN QUERY PLAN " + cmd.CommandText + "; SELECT 1";
+                cmd.CommandText = "EXPLAIN QUERY PLAN " + cmd.CommandText;
 
                 connection.Open();
 
-                content = cmd.ExecuteScalar().ToString();
+                cmd.ExecuteNonQuery();
             }
 
-            analyzeSqliteExecutionPlan(content);
+            // Sqlite has no documented query plan result; we cannot really verify anything other than standard syntax
         }
-
-        public static void ExplainSingleResult(this CommandBuilder command, Microsoft.Data.Sqlite.SqliteConnection connection) =>
-            command.Explain(connection, AnalyzeSingleResultExecutionPlan);
-        public static void ExplainMultipleResult(this CommandBuilder command, Microsoft.Data.Sqlite.SqliteConnection connection) =>
-            command.Explain(connection, AnalyzeMultipleResultExecutionPlan);
-
-        public static void AnalyzeSingleResultExecutionPlan(string doc)
-        {
-
-        }
-
-        public static void AnalyzeMultipleResultExecutionPlan(string doc)
-        {
-
-        }
-
     }
 }

@@ -60,27 +60,41 @@ CREATE INDEX IX_People_OptOut ON People (OptOut);
 
         [Fact]
         public void FindUserByIdExplainTest() =>
-            ExplainSingleResult(EmailManager.FindPersonByIdCommand);
+            Explain(EmailManager.FindPersonByIdCommand);
 
 
         [Fact]
         public void CreateUserExplainTest() =>
-            ExplainSingleResult(EmailManager.CreatePersonCommand);
+            Explain(EmailManager.CreatePersonCommand);
 
 
         [Fact]
         public void FindUserByEmailCommandExplainTest() =>
-            ExplainMultipleResult(EmailManager.FindPeopleByEmailCommand);
+            Explain(EmailManager.FindPeopleByEmailCommand);
 
 
         [Fact]
         public void OptOutExplainTest() =>
-            ExplainMultipleResult(EmailManager.OptOutCommand);
+            Explain(EmailManager.OptOutCommand);
 
 
         [Fact]
         public void GetOptedInExplainTest() =>
-            ExplainMultipleResult(EmailManager.GetOptedInCommand);
+            Explain(EmailManager.GetOptedInCommand);
+
+        [Fact]
+        public void VerifyInvalidExplainTest()
+        {
+            try
+            {
+                Explain(new CommandBuilder(commandText: @"SELECT 1 FROM NotATable"));
+                Assert.False(true, "This explain plan should fail.");
+            }
+            catch
+            {
+
+            }
+        }
 
         #endregion
 
@@ -327,10 +341,8 @@ CREATE INDEX IX_People_OptOut ON People (OptOut);
         private static CancellationToken AnyCancellationToken =>
             It.IsAny<CancellationToken>();
         
-        private void ExplainSingleResult(CommandBuilder builder) =>
-            builder.ExplainSingleResult(BuildSqlConnection());
-        private void ExplainMultipleResult(CommandBuilder builder) =>
-            builder.ExplainMultipleResult(BuildSqlConnection());
+        private void Explain(CommandBuilder builder) =>
+            builder.Explain(BuildSqlConnection());
 
         private SqliteConnection BuildSqlConnection() =>
             new SqliteConnection(connectionString);
