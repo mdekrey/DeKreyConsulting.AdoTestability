@@ -14,6 +14,7 @@
     "DeKreyConsulting.AdoTestability": "[1.0.4,)",
     "DeKreyConsulting.AdoTestability.Testing.Moq": "[1.0.3,)",
     "DeKreyConsulting.AdoTestability.Testing.Sqlite": "[1.0.0,)",
+    "DeKreyConsulting.AdoTestability.Sqlite.Example": "[1.0.0,)",
     "Microsoft.Data.SQLite": "1.0.0"
   },
 

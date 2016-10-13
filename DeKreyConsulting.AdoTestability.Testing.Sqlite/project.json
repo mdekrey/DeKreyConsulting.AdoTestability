@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.1-*",
   "title": "Ado Testability - Sqlite extensions",
   "description": "Provides execution plan testing for Sqlite. This allows you to unit test the `CommandBuilder.CommandText` property by actually sending it to the database and running an explain plan.",
   "authors": [ "Matt DeKrey" ],
