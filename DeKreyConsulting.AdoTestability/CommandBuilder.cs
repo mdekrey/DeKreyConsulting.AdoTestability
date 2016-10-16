@@ -85,7 +85,7 @@ namespace DeKreyConsulting.AdoTestability
         {
             foreach (var param in Parameters)
             {
-                var value = parameterValues.ContainsKey(param.Key) ? parameterValues[param.Key] : null;
+                var value = (parameterValues?.ContainsKey(param.Key) ?? false) ? parameterValues[param.Key] : null;
                 BuildParameter(command, param.Key, param.Value, value);
             }
         }
