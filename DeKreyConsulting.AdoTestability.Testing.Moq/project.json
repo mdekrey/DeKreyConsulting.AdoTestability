@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3-*",
+  "version": "1.1.0-*",
   "title": "Ado Testability - Moq extensions",
   "description": "Provides classes that use the Moq mocking framework. This provides easy mock setup, tracking of command executions, including parameter values.",
   "authors": [ "Matt DeKrey" ],
@@ -12,13 +12,13 @@
   "frameworks": {
     "net451": {
       "frameworkAssemblies": {
-        "System.Data": "4.0.0.0"
+        "System.Data": "[4.0.0.0,)"
       }
     }
   },
   "dependencies": {
-    "DeKreyConsulting.AdoTestability": "[1.0.3,)",
-    "DeKreyConsulting.AdoTestability.Testing.Stubs": "[1.0.3,)",
-    "Moq": "4.2.1510.2205"
+    "DeKreyConsulting.AdoTestability": "[1.1.0,)",
+    "DeKreyConsulting.AdoTestability.Testing.Stubs": "[1.1.0,)",
+    "Moq": "[4.2.1510.2205,)"
   }
 }

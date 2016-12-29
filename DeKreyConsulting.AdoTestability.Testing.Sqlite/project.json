@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1-*",
+  "version": "1.1.0-*",
   "title": "Ado Testability - Sqlite extensions",
   "description": "Provides execution plan testing for Sqlite. This allows you to unit test the `CommandBuilder.CommandText` property by actually sending it to the database and running an explain plan.",
   "authors": [ "Matt DeKrey" ],
@@ -12,26 +12,21 @@
   "frameworks": {
     "net451": {
       "frameworkAssemblies": {
-        "System.Xml": "4.0.0.0",
-        "System.Xml.Linq": "4.0.0.0"
+        "System.Xml": "[4.0.0.0,)",
+        "System.Xml.Linq": "[4.0.0.0,)"
       }
     },
     "netstandard1.3": {
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1",
-        "System.Collections": "4.0.11",
-        "System.Linq": "4.1.0",
-        "System.Runtime": "4.1.0",
-        "System.Threading": "4.0.11",
-        "System.Xml.XDocument": "4.0.11",
-        "System.Xml.XPath.XmlDocument": "4.0.1"
+        "System.Xml.XDocument": "[4.3.0,)",
+        "System.Xml.XPath.XmlDocument": "[4.3.0,)"
       }
     }
   },
 
   "dependencies": {
-    "Microsoft.Data.SQLite": "1.0.0",
-    "DeKreyConsulting.AdoTestability": "[1.0.4,)",
-    "DeKreyConsulting.AdoTestability.Testing.Stubs": "[1.0.3,)"
+    "Microsoft.Data.SQLite": "[1.1.0,)",
+    "DeKreyConsulting.AdoTestability": "[1.1.0,)",
+    "DeKreyConsulting.AdoTestability.Testing.Stubs": "[1.1.0,)"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": "1.0.5-*",
+  "version": "1.1.0-*",
   "title": "Ado Testability",
   "description": "The core project in the framework includes a simple `CommandBuilder` that can assemble a `System.Data.Common.DbCommand` from common configuration and connection-specifc configuration.",
   "authors": [ "Matt DeKrey" ],
@@ -10,18 +10,18 @@
   },
 
   "dependencies": {
-    "System.Data.Common": "4.1.0"
+    "System.Data.Common": "[4.3.0,)"
   },
 
   "frameworks": {
     "net451": {},
     "netstandard1.2": {
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1",
-        "System.Linq": "4.1.0",
-        "System.Runtime": "4.1.0",
-        "System.Threading": "4.0.11",
-        "System.Collections": "4.0.11"
+        "Microsoft.CSharp": "[4.3.0,)",
+        "System.Linq": "[4.3.0,)",
+        "System.Runtime": "[4.3.0,)",
+        "System.Threading": "[4.3.0,)",
+        "System.Collections": "[4.3.0,)"
       }
     }
   }
