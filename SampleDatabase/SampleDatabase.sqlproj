@@ -58,8 +58,23 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="scripts" />
+    <Folder Include="scripts\build" />
+    <Folder Include="scripts\runtime" />
+    <Folder Include="scripts\shared" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="People.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="scripts\build\ci-entry.sh" />
+    <None Include="scripts\runtime\entrypoint.sh" />
+    <None Include="scripts\shared\wait-for-sql.sh" />
+    <None Include="Dockerfile" />
+    <None Include="Dockerfile-ci" />
+    <None Include=".dockerignore" />
+    <None Include="docker-compose.yml" />
+    <None Include="docker-compose.ci.yml" />
+    <None Include="sql-eula.txt" />
   </ItemGroup>
 </Project>

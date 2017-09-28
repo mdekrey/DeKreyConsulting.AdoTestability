@@ -12,8 +12,8 @@ namespace DeKreyConsulting.AdoTestability.Tests
 {
     public class NegativeTest
     {
-        // Install the dacpac ("Deploy Data-tier Application") produced by the SampleDatabase project
-        const string connectionString = "Server=.\\SQLExpress;Database=adotestability;Trusted_Connection=True;";
+        // See the readme in the SampleDatabase project to set up a docker container
+        const string connectionString = "Server=localhost,11433;Database=adotestability;User Id=sa;Password=weakPASSw0rd;";
 
         [Fact]
         public void OptOutIsNotSingleExplainTest()

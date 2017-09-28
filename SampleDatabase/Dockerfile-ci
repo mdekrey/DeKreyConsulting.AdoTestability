@@ -1,0 +1,15 @@
+FROM microsoft/mssql-server-linux:rc2
+
+WORKDIR /working
+COPY scripts/shared/*.sh ./
+COPY scripts/build/*.sh ./
+COPY *.sql ./
+
+ENV ACCEPT_EULA=Y
+ENV SA_PASSWORD=weakPASSw0rd
+
+# Needs environment variables set up;
+# https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker
+RUN /bin/bash -c "./ci-entry.sh"
+
+CMD /bin/bash -c "cp -R /out/* /src"

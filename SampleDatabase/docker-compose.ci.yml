@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  adotestability-ci:
+    image: adotestability-sql:build
+    build:
+      context: .
+      dockerfile: Dockerfile-ci
+    volumes:
+      - .:/src
+    working_dir: /src
