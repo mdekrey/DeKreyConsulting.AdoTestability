@@ -31,6 +31,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestabi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Sqlite.Example", "DeKreyConsulting.AdoTestability.Sqlite.Example\DeKreyConsulting.AdoTestability.Sqlite.Example.csproj", "{5569B534-6696-466A-A508-28B215D0BB92}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Postgres", "Postgres", "{84313201-8AFD-486F-A63D-1F59A065745E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Testing.Postgres", "DeKreyConsulting.AdoTestability.Testing.Postgres\DeKreyConsulting.AdoTestability.Testing.Postgres.csproj", "{71066363-718C-4BC7-AC66-79BA2AE29CCD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Postgres.Tests", "DeKreyConsulting.AdoTestability.Postgres.Tests\DeKreyConsulting.AdoTestability.Postgres.Tests.csproj", "{69E620BE-5D39-46B1-B637-6F89AD0ADCDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Postgres.Example", "DeKreyConsulting.AdoTestability.Postgres.Example\DeKreyConsulting.AdoTestability.Postgres.Example.csproj", "{69ECE08B-3E97-4E2E-978E-5F32DFA9BEF1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2B07540F-8EB1-43D0-A39C-90E28AB174CD}"
+	ProjectSection(SolutionItems) = preProject
+		package.ps1 = package.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +92,18 @@ Global
 		{5569B534-6696-466A-A508-28B215D0BB92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5569B534-6696-466A-A508-28B215D0BB92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5569B534-6696-466A-A508-28B215D0BB92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71066363-718C-4BC7-AC66-79BA2AE29CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71066363-718C-4BC7-AC66-79BA2AE29CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71066363-718C-4BC7-AC66-79BA2AE29CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71066363-718C-4BC7-AC66-79BA2AE29CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E620BE-5D39-46B1-B637-6F89AD0ADCDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E620BE-5D39-46B1-B637-6F89AD0ADCDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E620BE-5D39-46B1-B637-6F89AD0ADCDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E620BE-5D39-46B1-B637-6F89AD0ADCDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69ECE08B-3E97-4E2E-978E-5F32DFA9BEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69ECE08B-3E97-4E2E-978E-5F32DFA9BEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69ECE08B-3E97-4E2E-978E-5F32DFA9BEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69ECE08B-3E97-4E2E-978E-5F32DFA9BEF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +119,9 @@ Global
 		{20FD2325-ABDC-483D-9BAC-8D67BBA09B81} = {5C1CD4C4-F32F-4721-9678-3B75714C835E}
 		{7704C50B-22DC-467C-AD00-708A397FB572} = {91473ED3-EA37-42A6-AC4F-7D487187257A}
 		{5569B534-6696-466A-A508-28B215D0BB92} = {4795123D-C0BD-417E-B889-0D19D2848F8C}
+		{71066363-718C-4BC7-AC66-79BA2AE29CCD} = {84313201-8AFD-486F-A63D-1F59A065745E}
+		{69E620BE-5D39-46B1-B637-6F89AD0ADCDC} = {84313201-8AFD-486F-A63D-1F59A065745E}
+		{69ECE08B-3E97-4E2E-978E-5F32DFA9BEF1} = {84313201-8AFD-486F-A63D-1F59A065745E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA2D1ACA-541D-409B-8863-CA8CCDE96118}

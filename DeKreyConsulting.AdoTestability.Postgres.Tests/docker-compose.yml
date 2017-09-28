@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+  adotestability-psql:
+    image: adotestability-psql
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - "65432:5432"
