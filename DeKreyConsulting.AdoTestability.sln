@@ -1,20 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeKreyConsulting.AdoTestability", "DeKreyConsulting.AdoTestability\DeKreyConsulting.AdoTestability.xproj", "{8EBD7A35-EBC5-45A1-8EC5-DE0E428837BA}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeKreyConsulting.AdoTestability.Testing.Moq", "DeKreyConsulting.AdoTestability.Testing.Moq\DeKreyConsulting.AdoTestability.Testing.Moq.xproj", "{9FD85CB8-DAFC-4B92-8199-52C94217453E}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeKreyConsulting.AdoTestability.Testing.Stubs", "DeKreyConsulting.AdoTestability.Testing.Stubs\DeKreyConsulting.AdoTestability.Testing.Stubs.xproj", "{F81B6A25-42E8-4601-A0A8-AA9997D3D716}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeKreyConsulting.AdoTestability.Testing.SqlServer", "DeKreyConsulting.AdoTestability.Testing.SqlServer\DeKreyConsulting.AdoTestability.Testing.SqlServer.xproj", "{A8965E01-C536-4D95-B083-EECF75E0B036}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeKreyConsulting.AdoTestability.Example", "DeKreyConsulting.AdoTestability.Example\DeKreyConsulting.AdoTestability.Example.xproj", "{6CC6EEA3-3EB1-4D34-B01F-4619F99CC025}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SampleDatabase", "SampleDatabase\SampleDatabase.sqlproj", "{04BECD05-2CB5-491B-951A-65127C6E0351}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C09DF1E8-6AC4-403D-BAE0-4F716F9C0A8B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestingTools", "TestingTools", "{5C1CD4C4-F32F-4721-9678-3B75714C835E}"
@@ -23,13 +11,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{47
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{91473ED3-EA37-42A6-AC4F-7D487187257A}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeKreyConsulting.AdoTestability.Tests", "DeKreyConsulting.AdoTestability.Tests\DeKreyConsulting.AdoTestability.Tests.xproj", "{10B7252B-9FC6-48CC-B07E-162AA314D44A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability", "DeKreyConsulting.AdoTestability\DeKreyConsulting.AdoTestability.csproj", "{8EBD7A35-EBC5-45A1-8EC5-DE0E428837BA}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeKreyConsulting.AdoTestability.Testing.Sqlite", "DeKreyConsulting.AdoTestability.Testing.Sqlite\DeKreyConsulting.AdoTestability.Testing.Sqlite.xproj", "{20FD2325-ABDC-483D-9BAC-8D67BBA09B81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Testing.Moq", "DeKreyConsulting.AdoTestability.Testing.Moq\DeKreyConsulting.AdoTestability.Testing.Moq.csproj", "{9FD85CB8-DAFC-4B92-8199-52C94217453E}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeKreyConsulting.AdoTestability.Sqlite.Tests", "DeKreyConsulting.AdoTestability.Sqlite.Tests\DeKreyConsulting.AdoTestability.Sqlite.Tests.xproj", "{7704C50B-22DC-467C-AD00-708A397FB572}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Testing.Stubs", "DeKreyConsulting.AdoTestability.Testing.Stubs\DeKreyConsulting.AdoTestability.Testing.Stubs.csproj", "{F81B6A25-42E8-4601-A0A8-AA9997D3D716}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeKreyConsulting.AdoTestability.Sqlite.Example", "DeKreyConsulting.AdoTestability.Sqlite.Example\DeKreyConsulting.AdoTestability.Sqlite.Example.xproj", "{5569B534-6696-466A-A508-28B215D0BB92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Testing.SqlServer", "DeKreyConsulting.AdoTestability.Testing.SqlServer\DeKreyConsulting.AdoTestability.Testing.SqlServer.csproj", "{A8965E01-C536-4D95-B083-EECF75E0B036}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Example", "DeKreyConsulting.AdoTestability.Example\DeKreyConsulting.AdoTestability.Example.csproj", "{6CC6EEA3-3EB1-4D34-B01F-4619F99CC025}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SampleDatabase", "SampleDatabase\SampleDatabase.sqlproj", "{04BECD05-2CB5-491B-951A-65127C6E0351}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Tests", "DeKreyConsulting.AdoTestability.Tests\DeKreyConsulting.AdoTestability.Tests.csproj", "{10B7252B-9FC6-48CC-B07E-162AA314D44A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Testing.Sqlite", "DeKreyConsulting.AdoTestability.Testing.Sqlite\DeKreyConsulting.AdoTestability.Testing.Sqlite.csproj", "{20FD2325-ABDC-483D-9BAC-8D67BBA09B81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Sqlite.Tests", "DeKreyConsulting.AdoTestability.Sqlite.Tests\DeKreyConsulting.AdoTestability.Sqlite.Tests.csproj", "{7704C50B-22DC-467C-AD00-708A397FB572}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeKreyConsulting.AdoTestability.Sqlite.Example", "DeKreyConsulting.AdoTestability.Sqlite.Example\DeKreyConsulting.AdoTestability.Sqlite.Example.csproj", "{5569B534-6696-466A-A508-28B215D0BB92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,5 +94,8 @@ Global
 		{20FD2325-ABDC-483D-9BAC-8D67BBA09B81} = {5C1CD4C4-F32F-4721-9678-3B75714C835E}
 		{7704C50B-22DC-467C-AD00-708A397FB572} = {91473ED3-EA37-42A6-AC4F-7D487187257A}
 		{5569B534-6696-466A-A508-28B215D0BB92} = {4795123D-C0BD-417E-B889-0D19D2848F8C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA2D1ACA-541D-409B-8863-CA8CCDE96118}
 	EndGlobalSection
 EndGlobal

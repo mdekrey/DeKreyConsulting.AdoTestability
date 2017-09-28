@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Tests for DeKreyConsulting.AdoTestability.</Description>
+    <AssemblyTitle>Ado Testability Tests</AssemblyTitle>
+    <VersionPrefix>1.1.0</VersionPrefix>
+    <Authors>Matt DeKrey</Authors>
+    <TargetFramework>net451</TargetFramework>
+    <AssemblyName>DeKreyConsulting.AdoTestability.Tests</AssemblyName>
+    <PackageId>DeKreyConsulting.AdoTestability.Tests</PackageId>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <PackageTags>Database;Data;ADO.NET;test;tdd</PackageTags>
+    <PackageProjectUrl>https://github.com/mdekrey/DeKreyConsulting.AdoTestability</PackageProjectUrl>
+    <PackageLicenseUrl>https://spdx.org/licenses/MIT.html</PackageLicenseUrl>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DeKreyConsulting.AdoTestability\DeKreyConsulting.AdoTestability.csproj" />
+    <ProjectReference Include="..\DeKreyConsulting.AdoTestability.Example\DeKreyConsulting.AdoTestability.Example.csproj" />
+    <ProjectReference Include="..\DeKreyConsulting.AdoTestability.Testing.Moq\DeKreyConsulting.AdoTestability.Testing.Moq.csproj" />
+    <ProjectReference Include="..\DeKreyConsulting.AdoTestability.Testing.SqlServer\DeKreyConsulting.AdoTestability.Testing.SqlServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0-preview-20170106-08" />
+    <PackageReference Include="xunit" Version="2.2.0-beta5-build3474" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0-beta5-build1225" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="1.0.2" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

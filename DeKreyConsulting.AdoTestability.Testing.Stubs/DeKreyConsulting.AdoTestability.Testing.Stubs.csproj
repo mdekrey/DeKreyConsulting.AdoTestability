@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Provides fakes and classes that can be more easily overridden, mocked, or stubbed in tests.</Description>
+    <AssemblyTitle>Ado Testability Stubs</AssemblyTitle>
+    <VersionPrefix>1.1.0</VersionPrefix>
+    <Authors>Matt DeKrey</Authors>
+    <TargetFrameworks>net451;netstandard1.2</TargetFrameworks>
+    <AssemblyName>DeKreyConsulting.AdoTestability.Testing.Stubs</AssemblyName>
+    <PackageId>DeKreyConsulting.AdoTestability.Testing.Stubs</PackageId>
+    <PackageTags>Database;Data;ADO.NET;test;tdd</PackageTags>
+    <PackageProjectUrl>https://github.com/mdekrey/DeKreyConsulting.AdoTestability</PackageProjectUrl>
+    <PackageLicenseUrl>https://spdx.org/licenses/MIT.html</PackageLicenseUrl>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DeKreyConsulting.AdoTestability\DeKreyConsulting.AdoTestability.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.2' ">
+    <PackageReference Include="System.Runtime.Extensions" Version="[4.3.0,)" />
+  </ItemGroup>
+
+</Project>
