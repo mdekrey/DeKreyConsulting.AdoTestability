@@ -9,7 +9,9 @@ using System.Text;
 
 namespace DeKreyConsulting.AdoTestability.Testing.Moq
 {
+#if NETFRAMEWORK
     [ExcludeFromCodeCoverage]
+#endif
     public class CommandBuilderMocks
     {
         public CommandBuilderMocks(

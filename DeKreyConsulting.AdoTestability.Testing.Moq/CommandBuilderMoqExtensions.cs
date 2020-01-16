@@ -14,7 +14,9 @@ namespace Moq
 {
     public delegate void SetupCommandBuilderMock(Mock<MockableCommand> mockCommand, Action recordExecution);
 
+#if NETFRAMEWORK
     [ExcludeFromCodeCoverage]
+#endif
     public static class CommandBuilderMoqExtensions
     {
         public static CommandBuilderMocks SetupFor(this Mock<DbProviderFactory> mockFactory, Dictionary<CommandBuilder, SetupCommandBuilderMock> commandBuilders, bool withStandardDelay = false)
