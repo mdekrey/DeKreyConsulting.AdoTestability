@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Tests for DeKreyConsulting.AdoTestability.</Description>
     <AssemblyTitle>Ado Testability Tests</AssemblyTitle>
-    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <Authors>Matt DeKrey</Authors>
     <TargetFramework>net451</TargetFramework>
     <AssemblyName>DeKreyConsulting.AdoTestability.Tests</AssemblyName>

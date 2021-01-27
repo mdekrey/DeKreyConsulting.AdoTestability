@@ -3,34 +3,30 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using ParameterInitializer = System.Action<System.Data.Common.DbParameter>;
 
 namespace DeKreyConsulting.AdoTestability
 {
-    using IReadOnlyParameterInitializers = IReadOnlyDictionary<string, ParameterInitializer>;
-    using ReadOnlyParameterInitializers = ReadOnlyDictionary<string, ParameterInitializer>;
-
-    /// <summary>
-    /// Encapsulates the basics of building an ADO.Net command in a functional way. The CommandBuilders should be constructed statically and re-used across
-    /// multiple connections; it encapsulates connection-agnostic portions of the command as an object that can be re-used and builds a command given 
-    /// instance-specific values.
-    /// </summary>
     public class CommandBuilder
     {
+        private readonly IEnumerable<ParameterDefinition> parameterDefinitions;
+
         /// <summary>
-        /// Constructs the command builder.
+        /// Constructs the command builder. Use CommandBuilderFactory instead.
         /// </summary>
         /// <param name="commandText">The command to execute, such as raw SQL or a stored procedure, depending on the command type</param>
         /// <param name="parameters">A list of parameter initializers, by name, to set types, directions, etc. This is copied to prevent modification in order to ensure
         /// deterministic behavior. (Slight performance hit, but these should be constructed statically.)</param>
         /// <param name="commandType">The type of the command</param>
         /// <param name="commandTimeout">The timeout duration, in seconds. Defaults to no timeout.</param>
-        public CommandBuilder(string commandText, IReadOnlyParameterInitializers parameters = null, CommandType commandType = CommandType.Text, int commandTimeout = 0)
+        internal CommandBuilder(string commandText, IEnumerable<ParameterDefinition> parameterDefinitions, CommandType commandType, int commandTimeout)
         {
             this.CommandText = commandText;
+            this.parameterDefinitions = parameterDefinitions;
             this.CommandType = commandType;
             this.CommandTimeout = commandTimeout;
-            this.Parameters = parameters ?? new ReadOnlyParameterInitializers(new Dictionary<string, ParameterInitializer>());
+            this.parameterDefinitions = parameterDefinitions;
         }
 
         /// <summary>
@@ -51,7 +47,29 @@ namespace DeKreyConsulting.AdoTestability
         /// <summary>
         /// Gets a copy of the parameters specified by the constructor
         /// </summary>
-        public IReadOnlyParameterInitializers Parameters { get; }
+        public IEnumerable<ParameterDefinition> Parameters => parameterDefinitions.ToArray();
+
+        /// <summary>
+        /// Builds a command given specific values
+        /// </summary>
+        /// <param name="connection">The connection that the command will be executed against</param>
+        /// <param name="transaction">The transaction within which to execute the command</param>
+        /// <returns>A new DbCommand that should be disposed of after use</returns>
+        public DbCommand BuildFrom(DbConnection connection, DbTransaction? transaction = null)
+        {
+            var command = connection.CreateCommand();
+            command.CommandText = CommandText;
+            command.CommandType = CommandType;
+            command.CommandTimeout = CommandTimeout;
+            command.Connection = connection;
+            command.Transaction = transaction;
+
+            foreach (var param in parameterDefinitions)
+            {
+                command.Parameters.Add(param.BuildParameter(command));
+            }
+            return command;
+        }
 
         /// <summary>
         /// Builds a command given specific values
@@ -60,46 +78,28 @@ namespace DeKreyConsulting.AdoTestability
         /// <param name="parameterValues">The values of the parameters to be used, if any</param>
         /// <param name="transaction">The transaction within which to execute the command</param>
         /// <returns>A new DbCommand that should be disposed of after use</returns>
-        public DbCommand BuildFrom(DbConnection connection, IReadOnlyDictionary<string, object> parameterValues = null, DbTransaction transaction = null)
+        public DbCommand BuildFrom(DbConnection connection, IList<object> parameterValues, DbTransaction? transaction = null)
         {
-            try
-            {
-                var command = connection.CreateCommand();
-                command.CommandText = CommandText;
-                command.CommandType = CommandType;
-                command.CommandTimeout = CommandTimeout;
-                command.Connection = connection;
-                command.Transaction = transaction;
+            var command = BuildFrom(connection, transaction);
 
-                ApplyParameters(command, parameterValues);
-
-                return command;
-            }
-            catch (Exception ex)
+            for (var i = 0; i < parameterValues.Count; i++)
             {
-                throw new InvalidOperationException($"Unable to set up command: {CommandText}", ex);
+                command.Parameters[i].Value = parameterValues[i] ?? DBNull.Value;
             }
+
+            return command;
         }
 
-        private void ApplyParameters(DbCommand command, IReadOnlyDictionary<string, object> parameterValues)
+        /// <summary>
+        /// Builds a command given specific values
+        /// </summary>
+        /// <param name="connection">The connection that the command will be executed against</param>
+        /// <param name="parameterValues">The values of the parameters to be used, if any</param>
+        /// <param name="transaction">The transaction within which to execute the command</param>
+        /// <returns>A new DbCommand that should be disposed of after use</returns>
+        public DbCommand BuildFrom(DbConnection connection, IReadOnlyDictionary<string, object> parameterValues, DbTransaction? transaction = null)
         {
-            foreach (var param in Parameters)
-            {
-                var value = (parameterValues?.ContainsKey(param.Key) ?? false) ? parameterValues[param.Key] : null;
-                BuildParameter(command, param.Key, param.Value, value);
-            }
-        }
-
-        private static void BuildParameter(DbCommand command, string paramName, ParameterInitializer paramInitializer, object value)
-        {
-            var parameter = command.CreateParameter();
-            if (paramName != null)
-            {
-                parameter.ParameterName = paramName;
-            }
-            paramInitializer(parameter);
-            parameter.Value = value;
-            command.Parameters.Add(parameter);
+            return BuildFrom(connection, transaction).ApplyParameters(parameterValues);
         }
     }
 }

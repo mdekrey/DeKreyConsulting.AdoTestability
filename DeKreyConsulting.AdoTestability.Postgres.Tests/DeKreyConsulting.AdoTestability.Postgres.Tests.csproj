@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Tests for DeKreyConsulting.AdoTestability.Postgres.</Description>
     <AssemblyTitle>Ado Postgres Testability Tests</AssemblyTitle>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <Authors>Matt DeKrey</Authors>
     <TargetFramework>net451</TargetFramework>
     <AssemblyName>DeKreyConsulting.AdoTestability.Postgres.Tests</AssemblyName>

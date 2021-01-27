@@ -14,7 +14,7 @@ namespace DeKreyConsulting.AdoTestability
         public static void Explain(this CommandBuilder command, Microsoft.Data.Sqlite.SqliteConnection connection)
         {
             using (connection)
-            using (var cmd = command.BuildFrom(connection, command.Parameters.ToDictionary(kvp => kvp.Key, kvp => (object)DBNull.Value)))
+            using (var cmd = command.BuildFrom(connection, command.Parameters.ToDictionary(kvp => kvp.Name, kvp => (object)DBNull.Value)))
             {
                 cmd.CommandText = "EXPLAIN QUERY PLAN " + cmd.CommandText;
 

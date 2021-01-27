@@ -87,7 +87,7 @@ CREATE INDEX IX_People_OptOut ON People (OptOut);
         {
             try
             {
-                Explain(new CommandBuilder(commandText: @"SELECT 1 FROM NotATable"));
+                Explain(new CommandBuilderFactory(commandText: @"SELECT 1 FROM NotATable").Build());
                 Assert.False(true, "This explain plan should fail.");
             }
             catch

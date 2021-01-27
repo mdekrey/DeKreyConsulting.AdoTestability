@@ -34,7 +34,7 @@ namespace DeKreyConsulting.AdoTestability.Tests
         {
             try
             {
-                ExplainSingleResult(new CommandBuilder(commandText: @"SELECT 1 FROM [dbo].[NonExistantTable]"));
+                ExplainSingleResult(new CommandBuilderFactory(commandText: @"SELECT 1 FROM [dbo].[NonExistantTable]").Build());
                 Assert.False(true, "SqlException was not thrown.");
             }
             catch (SqlException)

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Provides execution plan testing for Postgres. This allows you to unit test the `CommandBuilder.CommandText` property by actually sending it to the database and running an explain plan.</Description>
     <AssemblyTitle>Ado Testability - Postgres extensions</AssemblyTitle>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <Authors>Matt DeKrey</Authors>
     <TargetFrameworks>net451;netstandard1.3</TargetFrameworks>
     <AssemblyName>DeKreyConsulting.AdoTestability.Testing.Postgres</AssemblyName>

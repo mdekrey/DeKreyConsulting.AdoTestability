@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Provides fakes and classes that can be more easily overridden, mocked, or stubbed in tests.</Description>
     <AssemblyTitle>Ado Testability Stubs</AssemblyTitle>
-    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <Authors>Matt DeKrey</Authors>
     <TargetFrameworks>net451;netstandard1.2</TargetFrameworks>
     <AssemblyName>DeKreyConsulting.AdoTestability.Testing.Stubs</AssemblyName>

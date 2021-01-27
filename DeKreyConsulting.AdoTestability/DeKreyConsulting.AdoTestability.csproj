@@ -3,7 +3,9 @@
   <PropertyGroup>
     <Description>The core project in the framework includes a simple `CommandBuilder` that can assemble a `System.Data.Common.DbCommand` from common configuration and connection-specifc configuration.</Description>
     <AssemblyTitle>Ado Testability</AssemblyTitle>
-    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
+    <LangVersion>9</LangVersion>
+    <Nullable>enable</Nullable>
     <Authors>Matt DeKrey</Authors>
     <TargetFrameworks>net451;netstandard1.2</TargetFrameworks>
     <AssemblyName>DeKreyConsulting.AdoTestability</AssemblyName>

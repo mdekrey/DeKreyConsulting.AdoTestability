@@ -14,38 +14,34 @@ namespace DeKreyConsulting.AdoTestability.Example
         // We place all SQL in publicly accessibly commands so they can be tested for validity
         // When we need specific parameter types, the type must be tested for; most derived types are sealed and cannot be mocked. The below example is gratuitous.
 
-        public static readonly CommandBuilder FindPersonByIdCommand = new CommandBuilder(
+        public static readonly CommandBuilder FindPersonByIdCommand = new CommandBuilderFactory(
             commandText: @"SELECT FullName, Email, OptOut
                            FROM [dbo].[People]
-                           WHERE Id=@Id",
-            parameters: new Dictionary<string, Action<DbParameter>>
-            {
-                { "@Id", p => p.DbType = System.Data.DbType.Int32 },
-            });
-        public static readonly CommandBuilder FindPeopleByEmailCommand = new CommandBuilder(
+                           WHERE Id=@Id"
+            ) {
+                { "@Id", System.Data.DbType.Int32 },
+            }.Build();
+        public static readonly CommandBuilder FindPeopleByEmailCommand = new CommandBuilderFactory(
             commandText: @"SELECT Id, FullName, OptOut
                            FROM [dbo].[People]
-                           WHERE Email=@Email",
-            parameters: new Dictionary<string, Action<DbParameter>>
-            {
-                { "@Email", p => p.DbType = System.Data.DbType.String },
-            });
-        public static readonly CommandBuilder CreatePersonCommand = new CommandBuilder(
+                           WHERE Email=@Email"
+            ) {
+                { "@Email", System.Data.DbType.String }
+            }.Build();
+        public static readonly CommandBuilder CreatePersonCommand = new CommandBuilderFactory(
             commandText: @"INSERT INTO [dbo].[People] (FullName, Email, OptOut)
                            VALUES (@FullName, @Email, 0);
 
-                           SELECT SCOPE_IDENTITY()",
-            parameters: new Dictionary<string, Action<DbParameter>>
-            {
-                { "@FullName", p => p.DbType = System.Data.DbType.String },
-                { "@Email", p => p.DbType = System.Data.DbType.String },
-            });
-        public static readonly CommandBuilder OptOutCommand = new CommandBuilder(
+                           SELECT SCOPE_IDENTITY()"
+            ) {
+                { "@FullName", System.Data.DbType.String },
+                { "@Email", System.Data.DbType.String },
+            }.Build();
+        public static readonly CommandBuilder OptOutCommand = new CommandBuilderFactory(
             commandText: @"UPDATE [dbo].[People] 
                            SET OptOut = 1
-                           WHERE Email = @Email",
-            parameters: new Dictionary<string, Action<DbParameter>>
-            {
+                           WHERE Email = @Email"
+            ) {
                 {
                     "@Email",
                     p => 
@@ -56,14 +52,12 @@ namespace DeKreyConsulting.AdoTestability.Example
                         }
                     }
                 },
-            });
-        public static readonly CommandBuilder GetOptedInCommand = new CommandBuilder(
+            }.Build();
+        public static readonly CommandBuilder GetOptedInCommand = new CommandBuilderFactory(
             commandText: @"SELECT Id, FullName, Email, OptOut
                            FROM [dbo].[People]
-                           WHERE OptOut = 0",
-            parameters: new Dictionary<string, Action<DbParameter>>
-            {
-            });
+                           WHERE OptOut = 0"
+            ).Build();
 
         #endregion
         

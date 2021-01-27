@@ -18,7 +18,7 @@ namespace DeKreyConsulting.AdoTestability
             string content = "";
 
             using (connection)
-            using (var cmd = command.BuildFrom(connection, command.Parameters.ToDictionary(kvp => kvp.Key, kvp => (object)DBNull.Value)))
+            using (var cmd = command.BuildFrom(connection, command.Parameters.ToDictionary(kvp => kvp.Name, kvp => (object)DBNull.Value)))
             {
                 cmd.CommandText = "EXPLAIN (FORMAT JSON, VERBOSE) " + string.Join("; EXPLAIN", cmd.CommandText.Split(';'));
                 foreach (NpgsqlParameter param in cmd.Parameters)

@@ -19,7 +19,7 @@ namespace DeKreyConsulting.AdoTestability.Postgres.Tests
     public class EmailManagerTest
     {
         // See the readme for steps to run the tests
-        const string connectionString = "Host=localhost;Port=65432;Username=postgres";
+        const string connectionString = "Host=localhost;Port=65432;Username=postgres;Password=testdb!1";
 
         #region Explain Tests
 

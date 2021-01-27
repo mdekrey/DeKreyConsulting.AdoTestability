@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Provides classes that use the Moq mocking framework. This provides easy mock setup, tracking of command executions, including parameter values.</Description>
     <AssemblyTitle>Ado Testability - Moq extensions</AssemblyTitle>
-    <VersionPrefix>1.2.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <Authors>Matt DeKrey</Authors>
     <TargetFrameworks>net451;netstandard1.3</TargetFrameworks>
     <AssemblyName>DeKreyConsulting.AdoTestability.Testing.Moq</AssemblyName>
