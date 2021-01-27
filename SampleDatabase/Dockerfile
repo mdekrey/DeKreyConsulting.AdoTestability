@@ -1,11 +1,11 @@
-FROM microsoft/mssql-server-linux:rc2
+FROM mcr.microsoft.com/mssql/server:2019-CU8-ubuntu-16.04
 
 WORKDIR /src
 
 ARG source
 COPY scripts/shared/*.sh ./
 COPY scripts/runtime/*.sh ./
-COPY obj/Docker/publish/master.bak ./
+COPY obj/Docker/publish/master.bak ./adotestability.bak
 
 EXPOSE 1433
 

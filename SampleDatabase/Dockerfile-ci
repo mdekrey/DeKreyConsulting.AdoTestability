@@ -1,8 +1,13 @@
-FROM microsoft/mssql-server-linux:rc2
+FROM mcr.microsoft.com/mssql/server:2019-CU8-ubuntu-16.04
+
+USER root
+RUN mkdir -p /out
+RUN chown mssql /out
+USER mssql
 
 WORKDIR /working
 COPY scripts/shared/*.sh ./
-COPY scripts/build/*.sh ./
+COPY scripts/create-bak/*.sh ./
 COPY *.sql ./
 
 ENV ACCEPT_EULA=Y
