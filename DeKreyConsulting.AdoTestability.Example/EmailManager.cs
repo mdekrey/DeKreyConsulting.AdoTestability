@@ -44,7 +44,7 @@ namespace DeKreyConsulting.AdoTestability.Example
             ) {
                 {
                     "@Email",
-                    p => 
+                    p =>
                     {
                         if (p is SqlParameter)
                         {
@@ -60,7 +60,7 @@ namespace DeKreyConsulting.AdoTestability.Example
             ).Build();
 
         #endregion
-        
+
         private readonly DbProviderFactory dbProvider;
         private readonly string connectionString;
 

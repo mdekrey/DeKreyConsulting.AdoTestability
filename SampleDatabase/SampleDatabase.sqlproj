@@ -59,7 +59,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="scripts" />
-    <Folder Include="scripts\build" />
+    <Folder Include="scripts\create-bak" />
     <Folder Include="scripts\runtime" />
     <Folder Include="scripts\shared" />
   </ItemGroup>
@@ -67,7 +67,7 @@
     <Build Include="People.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="scripts\build\ci-entry.sh" />
+    <None Include="scripts\create-bak\ci-entry.sh" />
     <None Include="scripts\runtime\entrypoint.sh" />
     <None Include="scripts\shared\wait-for-sql.sh" />
     <None Include="Dockerfile" />
@@ -76,5 +76,6 @@
     <None Include="docker-compose.yml" />
     <None Include="docker-compose.ci.yml" />
     <None Include="sql-eula.txt" />
+    <None Include="readme.md" />
   </ItemGroup>
 </Project>

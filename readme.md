@@ -6,26 +6,25 @@ it's easy to use ADO.NET. Unfortunately, ADO.NET is not a very testable framewor
 developers use it. This framework is intended to make it easy to write secure, testable queries
 in a simple and straightforward way.
 
-This framework has come in a few parts, to reduce dependencies. Currently it supports .Net 
-Framework 4.5.2 and .NET Core. 
+This framework has come in a few parts, to reduce dependencies. Currently it supports .Net
+Framework 4.5.2 and .NET Core (via .NET Standard 1.2).
 
 ## DeKreyConsulting.AdoTestability
-The core project in the framework includes a simple `CommandBuilder` that can assemble a 
+The core project in the framework includes a simple `CommandBuilder` that can assemble a
 `System.Data.Common.DbCommand` from common configuration and connection-specifc configuration.
 For example, you create a `CommandBuilder` statically and persist it:
 
 ```cs
-public static readonly CommandBuilder FindPersonByIdCommand = new CommandBuilder(
+public static readonly CommandBuilder FindPersonByIdCommand = new CommandBuilderFactory(
     commandText: @"SELECT FullName, Email, OptOut
                    FROM [dbo].[People]
-                   WHERE Id=@Id",
-    parameters: new Dictionary<string, Action<DbParameter>>
-    {
-        { "@Id", p => p.DbType = System.Data.DbType.Int32 },
-    });
+                   WHERE Id=@Id"
+    ) {
+        { "@Id", System.Data.DbType.Int32 },
+    }.Build();
 ```
 
-Statically building commands and requiring parameters prevents SQL Injection. Once you have the 
+Statically building commands and requiring parameters prevents SQL Injection. Once you have the
 `CommandBuilder` set up, you can then build and run the command using fairly standard ADO.Net.
 
 ```cs
@@ -75,7 +74,7 @@ Provides fakes and classes that can be more easily overridden, mocked, or stubbe
 
 ## DeKreyConsulting.AdoTestability.Testing.SqlServer
 
-Provides execution plan testing for SqlServer. This allows you to unit test the 
+Provides execution plan testing for SqlServer. This allows you to unit test the
 `CommandBuilder.CommandText` property by actually sending it to the database and running an explain
 plan. You can verify that the command is either a single result or multiple results and tests that
 proper indexes are used.
@@ -83,7 +82,7 @@ proper indexes are used.
 ```cs
 builder.ExplainSingleResult(BuildSqlConnection());
 builder.ExplainMultipleResult(BuildSqlConnection());
-``` 
+```
 
 ## DeKreyConsulting.AdoTestability.Testing.Moq
 
@@ -105,15 +104,15 @@ public async Task OptOutByEmail(Func<EmailManager, string, Task<int>> optOut)
 
     Assert.Equal(1, mocks.Executions[EmailManager.OptOutCommand].Count);
     Assert.Equal(mocks.Executions[EmailManager.OptOutCommand][0]["@Email"], email);
-        
+
     Assert.Equal(expectedResults, actualResults);
 }
 ```
 
 # Contributing
 
-Feel free to add an issue. Once there's an issue, feel free to provide a Pull Request. When doing 
-so, make sure to take into account testability and usability. However, you can also provide your 
+Feel free to add an issue. Once there's an issue, feel free to provide a Pull Request. When doing
+so, make sure to take into account testability and usability. However, you can also provide your
 own packages that build upon the ones provided here.
 
 # License
