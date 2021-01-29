@@ -2,6 +2,7 @@
 using DeKreyConsulting.AdoTestability.Testing.SqlServer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
@@ -18,29 +19,13 @@ namespace DeKreyConsulting.AdoTestability.Tests
         [Fact]
         public void OptOutIsNotSingleExplainTest()
         {
-            try
-            {
-                ExplainSingleResult(EmailManager.OptOutCommand);
-                Assert.False(true, "BadExecutionPlanException was not thrown.");
-            }
-            catch (BadExecutionPlanException)
-            {
-                // expected exception
-            }
+            Assert.Throws<BadExecutionPlanException>(() => ExplainSingleResult(EmailManager.OptOutCommand));
         }
 
         [Fact]
         public void FailedQueryTest()
         {
-            try
-            {
-                ExplainSingleResult(new CommandBuilderFactory(commandText: @"SELECT 1 FROM [dbo].[NonExistantTable]").Build());
-                Assert.False(true, "SqlException was not thrown.");
-            }
-            catch (SqlException)
-            {
-                // expected exception
-            }
+            Assert.Throws<SqlException>(() => ExplainSingleResult(new CommandBuilderFactory(commandText: @"SELECT 1 FROM [dbo].[NonExistantTable]").Build()));
         }
 
         #region Helper methods

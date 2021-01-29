@@ -66,9 +66,32 @@ namespace DeKreyConsulting.AdoTestability
             return new CommandBuilder(commandText, parameters.ToArray(), commandType, commandTimeout);
         }
 
+#if DEBUG
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+#endif
         IEnumerator IEnumerable.GetEnumerator()
         {
             return parameters.GetEnumerator();
         }
     }
+
 }
+
+#if DEBUG
+#if NETSTANDARD1_2
+namespace System.Diagnostics.CodeAnalysis
+{
+    [ExcludeFromCodeCoverageAttribute]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Interface)]
+    public class ExcludeFromCodeCoverageAttribute : Attribute
+    {
+        public ExcludeFromCodeCoverageAttribute(string? reason = null)
+        {
+            Reason = Reason;
+        }
+
+        public string? Reason { get; set; }
+    }
+}
+#endif
+#endif

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Linq;
 
 namespace DeKreyConsulting.AdoTestability
 {
     public static class DbCommandExtensions
     {
-        public static DbCommand ApplyParameters(this DbCommand command, IReadOnlyDictionary<string, object> parameterValues)
+        public static DbCommand ApplyParameters(this DbCommand command, params KeyValuePair<string, object>[] parameterValues)
         {
-            foreach (DbParameter param in command.Parameters)
+            var parameters = command.Parameters.OfType<DbParameter>().Where(p => p.ParameterName != null).ToDictionary(p => p.ParameterName, p => p);
+            foreach (var param in parameterValues)
             {
-                param.Value = (parameterValues.TryGetValue(param.ParameterName, out var v)
-                    ? v
-                    : null) ?? DBNull.Value;
+                parameters[param.Key].Value = param.Value;
             }
             return command;
         }

@@ -82,9 +82,11 @@ namespace DeKreyConsulting.AdoTestability
         {
             var command = BuildFrom(connection, transaction);
 
+            if (parameterValues.Count != command.Parameters.Count)
+                throw new InvalidOperationException($"If using unnamed parameter assignment, all parameters must be set. {command.Parameters.Count} values expected, but {parameterValues.Count} provided.");
             for (var i = 0; i < parameterValues.Count; i++)
             {
-                command.Parameters[i].Value = parameterValues[i] ?? DBNull.Value;
+                command.Parameters[i].Value = parameterValues[i];
             }
 
             return command;
@@ -99,7 +101,7 @@ namespace DeKreyConsulting.AdoTestability
         /// <returns>A new DbCommand that should be disposed of after use</returns>
         public DbCommand BuildFrom(DbConnection connection, IReadOnlyDictionary<string, object> parameterValues, DbTransaction? transaction = null)
         {
-            return BuildFrom(connection, transaction).ApplyParameters(parameterValues);
+            return BuildFrom(connection, transaction).ApplyParameters(parameterValues.ToArray());
         }
     }
 }

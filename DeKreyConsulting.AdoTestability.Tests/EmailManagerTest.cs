@@ -78,13 +78,18 @@ namespace DeKreyConsulting.AdoTestability.Tests
             mocks.Connection.VerifySet(conn => conn.ConnectionString = connectionString);
             mocks.Commands[EmailManager.CreatePersonCommand].Verify(command => command.ExecuteScalarAsync(AnyCancellationToken), Times.Once());
 
-            Assert.Equal(1, mocks.Executions[EmailManager.CreatePersonCommand].Count);
-            Assert.Equal(mocks.Executions[EmailManager.CreatePersonCommand][0]["@FullName"], name);
-            Assert.Equal(mocks.Executions[EmailManager.CreatePersonCommand][0]["@Email"], email);
+            Assert.Collection(
+                mocks.Executions[EmailManager.CreatePersonCommand],
+                execution =>
+                {
+                    Assert.Equal(execution["@FullName"], name);
+                    Assert.Equal(execution["@Email"], email);
+                }
+            );
             Assert.Equal(id, person.Id);
             Assert.Equal(name, person.FullName);
             Assert.Equal(email, person.Email);
-            Assert.Equal(false, person.OptOut);
+            Assert.False(person.OptOut);
         }
 
         #endregion
@@ -125,12 +130,16 @@ namespace DeKreyConsulting.AdoTestability.Tests
             mocks.Connection.VerifySet(conn => conn.ConnectionString = connectionString);
             mocks.Commands[EmailManager.FindPersonByIdCommand].Verify(command => command.PublicExecuteDbDataReaderAsync(System.Data.CommandBehavior.Default, AnyCancellationToken), Times.Once());
 
-            Assert.Equal(1, mocks.Executions[EmailManager.FindPersonByIdCommand].Count);
-            Assert.Equal(mocks.Executions[EmailManager.FindPersonByIdCommand][0]["@Id"], id);
+            Assert.Collection(
+                mocks.Executions[EmailManager.FindPersonByIdCommand],
+                execution =>
+                {
+                    Assert.Equal(execution["@Id"], id);
+                });
             Assert.Equal(id, person.Id);
             Assert.Equal(name, person.FullName);
             Assert.Equal(email, person.Email);
-            Assert.Equal(false, person.OptOut);
+            Assert.False(person.OptOut);
         }
 
         #endregion
@@ -180,8 +189,11 @@ namespace DeKreyConsulting.AdoTestability.Tests
             mocks.Connection.VerifySet(conn => conn.ConnectionString = connectionString);
             mocks.Commands[EmailManager.FindPeopleByEmailCommand].Verify(command => command.PublicExecuteDbDataReaderAsync(System.Data.CommandBehavior.Default, AnyCancellationToken), Times.Once());
 
-            Assert.Equal(1, mocks.Executions[EmailManager.FindPeopleByEmailCommand].Count);
-            Assert.Equal(mocks.Executions[EmailManager.FindPeopleByEmailCommand][0]["@Email"], email);
+            Assert.Collection(
+                mocks.Executions[EmailManager.FindPeopleByEmailCommand],
+                execution => {
+                    Assert.Equal(execution["@Email"], email);
+                });
 
             var results = people.ToArray();
             Assert.Equal(id1, results[0].Id);
@@ -217,8 +229,11 @@ namespace DeKreyConsulting.AdoTestability.Tests
             mocks.Connection.VerifySet(conn => conn.ConnectionString = connectionString);
             mocks.Commands[EmailManager.OptOutCommand].Verify(command => command.ExecuteNonQueryAsync(AnyCancellationToken), Times.Once());
 
-            Assert.Equal(1, mocks.Executions[EmailManager.OptOutCommand].Count);
-            Assert.Equal(mocks.Executions[EmailManager.OptOutCommand][0]["@Email"], email);
+            Assert.Collection(
+                mocks.Executions[EmailManager.OptOutCommand],
+                execution => {
+                    Assert.Equal(execution["@Email"], email);
+                });
             
             Assert.Equal(expectedResults, actualResults);
         }
@@ -273,7 +288,11 @@ namespace DeKreyConsulting.AdoTestability.Tests
             mocks.Connection.VerifySet(conn => conn.ConnectionString = connectionString);
             mocks.Commands[EmailManager.GetOptedInCommand].Verify(command => command.PublicExecuteDbDataReaderAsync(System.Data.CommandBehavior.Default, AnyCancellationToken), Times.Once());
 
-            Assert.Equal(1, mocks.Executions[EmailManager.GetOptedInCommand].Count);
+            Assert.Collection(
+                mocks.Executions[EmailManager.GetOptedInCommand],
+                execution => {
+                    Assert.Empty(execution);
+                });
 
             var results = people.ToArray();
             Assert.Equal(id1, results[0].Id);
